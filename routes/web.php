@@ -16,3 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+
+Route::resource('sender', App\Http\Controllers\SenderController::class)->only('index', 'show');
+
+Route::resource('beneficiary', App\Http\Controllers\BeneficiaryController::class)->only('index','show');
