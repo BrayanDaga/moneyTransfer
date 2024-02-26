@@ -19,6 +19,7 @@ Route::get('/', function () {
 
 
 
+Route::get('sender/search', [App\Http\Controllers\SenderController::class, 'search'])->name('sender.search');
 Route::resource('sender', App\Http\Controllers\SenderController::class)->only('index', 'show');
 
 Route::resource('beneficiary', App\Http\Controllers\BeneficiaryController::class)->only('index','show');
