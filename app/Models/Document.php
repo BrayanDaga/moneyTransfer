@@ -4,10 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Sender extends Model
+class Document extends Model
 {
     use HasFactory;
 
@@ -17,11 +15,9 @@ class Sender extends Model
      * @var array
      */
     protected $fillable = [
+        'type',
         'name',
-        'surname',
-        'cellphoneNumber',
-        'typeOfDocument',
-        'country',
+        'numero',
     ];
 
     /**
@@ -32,14 +28,4 @@ class Sender extends Model
     protected $casts = [
         'id' => 'integer',
     ];
-
-    public function beneficiaries(): BelongsToMany
-    {
-        return $this->belongsToMany(Beneficiary::class);
-    }
-
-    public function documents(): HasMany
-    {
-        return $this->hasMany(Document::class);
-    }
 }

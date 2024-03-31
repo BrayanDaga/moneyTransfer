@@ -4,16 +4,16 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
-use App\Models\Sender;
+use App\Models\Document;
 
-class SenderFactory extends Factory
+class DocumentFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Sender::class;
+    protected $model = Document::class;
 
     /**
      * Define the model's default state.
@@ -21,11 +21,9 @@ class SenderFactory extends Factory
     public function definition(): array
     {
         return [
+            'type' => $this->faker->randomElement(["passport","cardIdentity"]),
             'name' => $this->faker->name(),
-            'surname' => $this->faker->regexify('[A-Za-z0-9]{400}'),
-            'cellphoneNumber' => $this->faker->regexify('[A-Za-z0-9]{30}'),
-            'typeOfDocument' => $this->faker->regexify('[A-Za-z0-9]{50}'),
-            'country' => $this->faker->country(),
+            'numero' => $this->faker->regexify('[A-Za-z0-9]{200}'),
         ];
     }
 }

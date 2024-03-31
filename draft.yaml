@@ -2,12 +2,16 @@ models:
   Sender:
     name: string:200
     surname: string:400
-    document: string:200
     cellphoneNumber: string:30
     typeOfDocument: string:50
     country: string;20
     relationships:
       belongsToMany: Beneficiary
+      hasMany: Document
+  Document:
+    type: enum:passport,cardIdentity
+    name: string:200
+    numero: string:200
   Beneficiary:
     name: string:200
     surname: string:400

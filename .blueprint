@@ -2,13 +2,16 @@ created:
     - app/Http/Controllers/SenderController.php
     - app/Http/Controllers/BeneficiaryController.php
     - database/factories/SenderFactory.php
+    - database/factories/DocumentFactory.php
     - database/factories/BeneficiaryFactory.php
     - database/factories/BankAccountFactory.php
-    - database/migrations/2024_01_30_223858_create_senders_table.php
-    - database/migrations/2024_01_30_223859_create_beneficiaries_table.php
-    - database/migrations/2024_01_30_223900_create_bank_accounts_table.php
-    - database/migrations/2024_01_30_223901_create_beneficiary_sender_table.php
+    - database/migrations/2024_02_29_222334_create_senders_table.php
+    - database/migrations/2024_02_29_222335_create_documents_table.php
+    - database/migrations/2024_02_29_222336_create_beneficiaries_table.php
+    - database/migrations/2024_02_29_222337_create_bank_accounts_table.php
+    - database/migrations/2024_02_29_222338_create_beneficiary_sender_table.php
     - app/Models/Sender.php
+    - app/Models/Document.php
     - app/Models/Beneficiary.php
     - app/Models/BankAccount.php
     - database/seeders/SenderSeeder.php
@@ -16,11 +19,13 @@ created:
     - database/seeders/BankAccountSeeder.php
     - tests/Feature/Http/Controllers/SenderControllerTest.php
     - tests/Feature/Http/Controllers/BeneficiaryControllerTest.php
-    - resources/views/sender.blade.php
 updated:
     - routes/web.php
+skipped:
+    - resources/views/sender.blade.php
 models:
     User: { name: string, email: string, email_verified_at: 'datetime nullable', password: string, remember_token: 'string:100 nullable' }
-    Sender: { name: 'string:200', surname: 'string:400', document: 'string:200', cellphoneNumber: 'string:30', typeOfDocument: 'string:50', country: string;20, relationships: { belongsToMany: Beneficiary } }
+    Sender: { name: 'string:200', surname: 'string:400', cellphoneNumber: 'string:30', typeOfDocument: 'string:50', country: string;20, relationships: { belongsToMany: Beneficiary, hasMany: Document } }
     Beneficiary: { name: 'string:200', surname: 'string:400', document: 'nullable string:200', typeOfDocument: 'string:50', cellphoneNumber: 'nullable string:30', country: string;20, relationships: { hasMany: BankAccount, belongsToMany: Sender } }
     BankAccount: { name: 'string:200', ifsc: 'nullable string:200', numero: 'string:400', description: 'nullable string:200', relationships: { belongsTo: Beneficiary } }
+    Document: { type: 'enum:passport,cardIdentity', name: 'string:200', numero: 'string:200' }

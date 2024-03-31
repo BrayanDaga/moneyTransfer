@@ -56,7 +56,6 @@ public function search_sender_with_beneficiaries_by_document()
             'id' => $sender->id,
             'name' => $sender->name,
             'surname' => $sender->surname,
-            'document' => $sender->document,
             'cellphoneNumber' => $sender->cellphoneNumber,
             'typeOfDocument' => $sender->typeOfDocument,
             'country' => $sender->country,
